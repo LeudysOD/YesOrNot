@@ -28,7 +28,7 @@ final Message message;
         ),
       ),
       SizedBox(height: 5),
-      _imageBubble(),
+      _imageBubble(image: message.imageUrl),
       SizedBox(height: 10)
       //Todo: image
       ],
@@ -37,13 +37,17 @@ final Message message;
 }
 
 class _imageBubble extends StatelessWidget {
+   final String image;
+
+  const _imageBubble({super.key, required this.image});
+
   @override
   Widget build(BuildContext context) {
 
 final size = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
-      child: Image.network("https://yesno.wtf/assets/yes/3-422e51268d64d78241720a7de52fe121.gif",
+      child: Image.network(image,
       width: size.width * 0.7,
       height: 150,
       fit: BoxFit.cover,
